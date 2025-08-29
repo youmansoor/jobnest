@@ -4,8 +4,8 @@ ini_set('display_errors', 1);
 session_start();
 include 'config.php';
 
-$clientID = '616789096867-e4u3neirjcags706l4b0qfjjdprn2m37.apps.googleusercontent.com';
-$clientSecret = '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';
+$clientID = '272700466901-3se78dol9g318ljcka0bplvlsu8h2h71.apps.googleusercontent.com';
+$clientSecret = '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';
 $redirectURI = 'http://localhost/jobnest/google_callback.php';
 
 if (!isset($_GET['code'])) {

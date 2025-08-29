@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 22, 2025 at 01:50 AM
+-- Generation Time: Aug 29, 2025 at 04:55 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -49,34 +49,26 @@ INSERT INTO `admin` (`id`, `Name`, `Email`, `Password`) VALUES
 
 CREATE TABLE `applicants` (
   `id` int(11) NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `email` varchar(255) NOT NULL,
   `resume_path` varchar(255) NOT NULL,
   `cover_letter` varchar(255) NOT NULL,
-  `job_title` varchar(255) DEFAULT NULL
+  `job_title` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `applicants`
 --
 
-INSERT INTO `applicants` (`id`, `name`, `email`, `resume_path`, `cover_letter`, `job_title`) VALUES
-(1, 'Ali Raza', 'ali.raza@example.com', 'resumes/ali_raza_cv.pdf', 'I am excited to apply for the software engineer position. I bring hands-on experience in PHP and MySQL.', NULL),
-(2, 'Sara Khan', 'sara.khan@example.com', 'resumes/sara_khan_resume.pdf', 'With a strong background in UI/UX design, I am confident I can contribute to your team.', NULL),
-(3, 'Ahmed Hassan', 'ahmed.hassan@example.com', 'resumes/ahmed_hassan_cv.pdf', 'I have 3 years of experience as a Java Developer and am eager to join your backend team.', NULL),
-(4, 'Fatima Noor', 'fatima.noor@example.com', 'resumes/fatima_noor_resume.pdf', 'My background in data analysis and visualization makes me a great fit for this role.', NULL),
-(5, 'Bilal Ahmed', 'bilal.ahmed@example.com', 'resumes/bilal_ahmed_cv.pdf', 'Please find attached my resume for your consideration for the DevOps position.', NULL),
-(6, 'Ayesha Malik', 'ayesha.malik@example.com', 'resumes/ayesha_malik_resume.pdf', 'I am passionate about frontend technologies and have 2 years experience in React.js.', NULL),
-(7, 'Zain Siddiqui', 'zain.siddiqui@example.com', 'resumes/zain_siddiqui_cv.pdf', 'I am applying for the network engineer role and have a CCNA certification.', NULL),
-(8, 'Mariam Yousaf', 'mariam.yousaf@example.com', 'resumes/mariam_yousaf_resume.pdf', 'My background in cybersecurity aligns with your current job opening.', NULL),
-(9, 'Usman Tariq', 'usman.tariq@example.com', 'resumes/usman_tariq_cv.pdf', 'Experienced in Laravel and ready to work on scalable systems.', NULL),
-(10, 'Hina Javed', 'hina.javed@example.com', 'resumes/hina_javed_resume.pdf', 'Enthusiastic about joining your QA team. I bring manual and automated testing experience.', NULL),
-(11, 'Ali Raza', 'ali.raza@example.com', 'resumes/resume_1755370539_ali_raza_cv.pdf', 'sdlksdklsdk', NULL),
-(12, 'you', 'you@gmail.com', 'resumes/resume_1755462078_pdf-test.pdf', 'kjhkhukhiuhhk', NULL),
-(13, 'you', 'you@gmail.com', 'resumes/resume_1755463279_pdf-test.pdf', 'kmijuhuh', NULL),
-(14, 'you', 'you@gmail.com', 'resumes/resume_1755463442_pdf-test.pdf', 'abcdef', 'Front End Developer'),
-(15, 'you', 'you@gmail.com', 'resumes/resume_1755806086_pdf-test.pdf', 'jkjk', NULL),
-(16, 'you', 'you@gmail.com', 'resumes/resume_1755806757_pdf-test.pdf', 'kik', 'Software Engineer');
+INSERT INTO `applicants` (`id`, `resume_path`, `cover_letter`, `job_title`) VALUES
+(1, 'resumes/ali_raza_cv.pdf', 'I am excited to apply for the software engineer po...', 'Software Engineer'),
+(2, 'resumes/sara_khan_resume.pdf', 'With a strong background in UI/UX design, I am con...', 'UI/UX Designer'),
+(3, 'resumes/ahmed_hassan_cv.pdf', 'I have 3 years of experience as a Java Developer a...', 'Java Developer'),
+(4, 'resumes/fatima_noor_resume.pdf', 'My background in data analysis and visualization m...', 'Data Analyst'),
+(5, 'resumes/bilal_ahmed_cv.pdf', 'Please find attached my resume for your considerat...', 'Software Engineer'),
+(6, 'resumes/ayesha_malik_resume.pdf', 'I am passionate about frontend technologies and ha...', 'Frontend Developer'),
+(7, 'resumes/zain_siddiqui_cv.pdf', 'I am applying for the network engineer role and ha...', 'Network Engineer'),
+(8, 'resumes/mariam_yousaf_resume.pdf', 'My background in cybersecurity aligns with your cu...', 'Cybersecurity Analyst'),
+(9, 'resumes/usman_tariq_cv.pdf', 'Experienced in Laravel and ready to work on scalab...', 'Laravel Developer'),
+(10, 'resumes/hina_javed_resume.pdf', 'Enthusiastic about joining your QA team. I bring m...', 'QA Engineer');
 
 -- --------------------------------------------------------
 
@@ -88,35 +80,39 @@ CREATE TABLE `empolyee` (
   `id` int(11) NOT NULL,
   `Name` varchar(255) NOT NULL,
   `Email` varchar(255) NOT NULL,
-  `Password` varchar(255) NOT NULL
+  `Password` varchar(255) NOT NULL,
+  `user_role` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `empolyee`
 --
 
-INSERT INTO `empolyee` (`id`, `Name`, `Email`, `Password`) VALUES
-(1, 'HR - Systems Limited', 'hr@systemsltd.com', 'system123'),
-(2, 'Recruiter - 10Pearls', 'recruit@10pearls.com', 'pearls456'),
-(3, 'Talent Acquisition - NetSol', 'jobs@netsol.com', 'netsol@789'),
-(4, 'HR Manager - Techlogix', 'hr@techlogix.com', 'techlogix321'),
-(5, 'Recruitment - Folio3', 'careers@folio3.com', 'folio#dev'),
-(6, 'Hiring Manager - Arbisoft', 'hiring@arbisoft.com', 'arbiHR!'),
-(7, 'HR - CureMD', 'hr@curemd.com', 'curemd@123'),
-(8, 'Talent Team - Tkxel', 'talent@tkxel.com', 'tkxelpwd'),
-(9, 'Jobs - Ufone', 'jobs@ufone.com', 'ufonejobs'),
-(10, 'HR - VisionX', 'hr@visionx.com', 'visionx_pass'),
-(11, 'HR - Mindstorm Studios', 'hr@mindstorm.com', 'games123'),
-(12, 'HR - Rozee.pk', 'hr@rozee.pk', 'rozeepass'),
-(13, 'Hiring - Zong 4G', 'hr@zong.com.pk', 'zong4ghr'),
-(14, 'HR - PTCL', 'hr@ptcl.com.pk', 'ptcljobs'),
-(15, 'Recruiter - DPL', 'recruit@dpl.com', 'dplteam'),
-(16, 'HR - Techverx', 'hr@techverx.com', 'verx2025'),
-(17, 'Careers - Si Global', 'careers@siglobal.com', 'siglobal321'),
-(18, 'HR - TRG Pakistan', 'hr@trg.com.pk', 'trgtrg!'),
-(19, 'HR - CodeNinja', 'hr@codeninja.com', 'ninjajobs'),
-(20, 'Recruitment - Contour Software', 'recruitment@contour.com', 'contourHR'),
-(21, 'Mansoor', 'man@gmail.com', '42688213');
+INSERT INTO `empolyee` (`id`, `Name`, `Email`, `Password`, `user_role`) VALUES
+(1, 'HR - Systems Limited', 'hr@systemsltd.com', 'system123', 'IT'),
+(2, 'Recruiter - 10Pearls', 'recruit@10pearls.com', 'pearls456', 'IT'),
+(3, 'Talent Acquisition - NetSol', 'jobs@netsol.com', 'netsol@789', 'IT'),
+(4, 'HR Manager - Techlogix', 'hr@techlogix.com', 'techlogix321', 'IT'),
+(5, 'Recruitment - Folio3', 'careers@folio3.com', 'folio#dev', 'IT'),
+(6, 'Hiring Manager - ArbiSoft', 'hiring@arbisoft.com', 'arbiHR!', 'IT'),
+(7, 'HR - CureMD', 'hr@curemd.com', 'curemd@123', 'IT'),
+(8, 'Talent Team - Tixel', 'talent@tixel.com', 'tixelpwd', 'IT'),
+(9, 'Jobs - Ufone', 'jobs@ufone.com', 'ufonejobs', 'IT'),
+(10, 'HR - VisionX', 'hr@visionx.com', 'visionx_pass', 'IT'),
+(11, 'HR - Mindstorm Studios', 'hr@mindstorm.com', 'games123', 'IT'),
+(12, 'HR - Rozee.pk', 'hr@rozee.pk', 'rozeeepass', 'IT'),
+(13, 'Hiring - Zong 4G', 'hr@zong.com.pk', 'zong4ghr', 'IT'),
+(14, 'HR - PTCL', 'hr@ptcl.com.pk', 'ptcljobs', 'IT'),
+(15, 'Recruiter - DPL', 'recruit@dpl.com', 'dplteam', 'IT'),
+(16, 'HR - Techverx', 'hr@techverx.com', 'verx2025', 'IT'),
+(17, 'Careers - Si Global', 'careers@siglobal.com', 'siglobal321', 'IT'),
+(18, 'HR - TRG Pakistan', 'hr@trg.com.pk', 'trgtrg1', 'IT'),
+(19, 'HR - CodeNinja', 'hr@codeninja.com', 'ninjajobs', 'IT'),
+(20, 'Recruitment - Contour Software', 'recruitment@contour.com', 'contourHR', 'IT'),
+(21, 'Mansoor', 'man@gmail.com', '555', 'Markiting'),
+(22, 'Azhaan', 'azhaan@gmail.com', '888', 'SE Developer'),
+(23, 'umer', 'you@gmail.com', '576', 'Designer'),
+(24, 'you', 'waiz@gmail.com', '666', 'Designer');
 
 -- --------------------------------------------------------
 
@@ -138,7 +134,8 @@ CREATE TABLE `feedback` (
 INSERT INTO `feedback` (`id`, `name`, `email`, `message`) VALUES
 (1, 'Mansoor', 'admin@shopstore.com', 'gdfgfgdf'),
 (2, 'hgh', 'yg@g', 'ghgfhfg'),
-(3, 'm', 'you@gmail.com', 'jjkhh');
+(3, 'm', 'you@gmail.com', 'jjkhh'),
+(4, 'hgh', 'you@gmail.com', 'hjhjh');
 
 -- --------------------------------------------------------
 
@@ -184,6 +181,26 @@ INSERT INTO `jobs` (`id`, `employer_email`, `title`, `company`, `location`, `sec
 (21, 'man@gmail.com', 'Front End Developer', 'unknown', 'karachi', 'Engineering', 'Skilled person required'),
 (22, 'man@gmail.com', 'Front End Developer', 'unknown', 'karachi', 'Engineering', 'Skilled person required'),
 (23, 'hr@systemsltd.com', 'UI/UX designer', 'Systems Limited', 'Lahore', 'IT', 'We are looking for a talented and detail-oriented UI/UX Designer to create intuitive, user-centered designs for our digital products. You will work closely with product managers, developers, and stakeholders to understand user needs, translate them into d');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `roles`
+--
+
+CREATE TABLE `roles` (
+  `id` int(11) NOT NULL,
+  `role_name` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `roles`
+--
+
+INSERT INTO `roles` (`id`, `role_name`) VALUES
+(101, 'SE Developer'),
+(102, 'Designer'),
+(103, 'Markiting');
 
 -- --------------------------------------------------------
 
@@ -279,19 +296,19 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `applicants`
 --
 ALTER TABLE `applicants`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `empolyee`
 --
 ALTER TABLE `empolyee`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `feedback`
 --
 ALTER TABLE `feedback`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `jobs`

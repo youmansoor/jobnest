@@ -53,7 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 ?>
 <?php
-$clientID = '616789096867-e4u3neirjcags706l4b0qfjjdprn2m37.apps.googleusercontent.com';
+$clientID = '272700466901-3se78dol9g318ljcka0bplvlsu8h2h71.apps.googleusercontent.com';
 $redirectURI = 'http://localhost/jobnest/google_callback.php';
 
 $google_login_url = "https://accounts.google.com/o/oauth2/v2/auth?" . http_build_query([
@@ -359,7 +359,7 @@ $google_login_url = "https://accounts.google.com/o/oauth2/v2/auth?" . http_build
 <?php include 'footer.php';?>
 
 <script>
-    const clientId = '616789096867-e4u3neirjcags706l4b0qfjjdprn2m37.apps.googleusercontent.com';
+    const clientId = '272700466901-3se78dol9g318ljcka0bplvlsu8h2h71.apps.googleusercontent.com';
     const redirectUri = 'http://localhost/jobnest/google_callback.php';
 
     function updateGoogleLoginLink() {
