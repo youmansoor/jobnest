@@ -1,7 +1,7 @@
 <?php
 session_start();
+include 'config.php';
 require_once 'header.php';
-require_once 'config.php';
 
 $title = isset($_GET['title']) ? trim($_GET['title']) : '';
 $location = isset($_GET['location']) ? trim($_GET['location']) : '';
@@ -35,6 +35,7 @@ $jobs = $job->fetchAll();
 <head>
     <meta charset="UTF-8" />
     <title>Find Jobs - Job Nest</title>
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet" />
     <style>
@@ -93,12 +94,12 @@ $jobs = $job->fetchAll();
     .search-box .btn:hover {
       background-color: #005f99;
     }
-    @media (max-width: 768px) {
+    /* @media (max-width: 768px) {
       .search-box input,
       .search-box select {
         width: 100%;
       }
-    }
+    } */
         .container {
             display: flex;
             height: 100vh;
@@ -158,7 +159,7 @@ $jobs = $job->fetchAll();
         .btn-apply:hover {
             background: #007acc;
         }
-        @media (max-width: 768px) {
+        /* @media (max-width: 768px) {
             .container {
                 flex-direction: column;
             }
@@ -166,7 +167,7 @@ $jobs = $job->fetchAll();
                 width: 100%;
                 height: auto;
             }
-        }
+        } */
     </style>
 </head>
 <body>

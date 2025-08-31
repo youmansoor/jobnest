@@ -92,7 +92,7 @@ $role = 'Admin';
 
         <div class="mb-3">
           <label for="userId" class="form-label">User ID</label>
-          <input type="number" class="form-control" id="userId" name="id" required>
+          <input type="number" class="form-control" id="userId" name="id">
         </div>
 
         <div class="mb-3">
@@ -128,7 +128,7 @@ $role = 'Admin';
   </div>
 </div>
 </div>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script>
   document.addEventListener('DOMContentLoaded', function () {
     const userNameBtn = document.getElementById('user-name-btn');
@@ -145,5 +145,5 @@ $role = 'Admin';
       });
     }
   });
-</script>
+</script> -->
 <?php include 'adminfooter.php'; ?>

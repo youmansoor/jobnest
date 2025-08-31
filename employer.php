@@ -222,6 +222,9 @@ $applicants = $appStmt->fetchAll();
                     <p><em>No applicants yet for this job.</em></p>
                 <?php endif; ?>
             </div>
+            <form action="delete.php" method="POST">
+                <button type="Submit" name="delete" value="<?php echo $job['id']; ?>">Delete</button>
+            </form>
         <?php endforeach; ?>
     <?php else: ?>
         <p>You haven’t posted any jobs yet.</p>

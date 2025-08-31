@@ -2,21 +2,29 @@
 session_start();
 require_once 'config.php';
 
-// Optional admin protection
-// if (!isset($_SESSION['admin']) || $_SESSION['admin']['Email'] !== 'admin@gmail.com') {
-//     header("Location: login.php");
-//     exit;
-// }
+if (!isset($_SESSION['user']) || $_SESSION['user']['Email'] !== 'admin@gmail.com') {
+    header("Location: login.php");
+    exit;
+}
+
 
 $user = null;
 $name = '';
 $email = '';
 $role = '';
+
 if (isset($_SESSION['user'])) {
     $user = $_SESSION['user'];
     $name = $user['Name'];
     $email = $user['Email'];
-    $role = 'User';
+
+    // Check if it's admin
+    if ($email === 'admin@gmail.com') {
+        $role = 'Admin';
+    } else {
+        $role = 'User';
+    }
+
 } elseif (isset($_SESSION['empolyee'])) {
     $user = $_SESSION['empolyee'];
     $name = $user['Name'];
@@ -33,131 +41,12 @@ if (isset($_SESSION['user'])) {
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
   <style>
-    body {
-      font-family: 'Poppins', sans-serif;
-      background-color: #f8f9fa;
-    }
-
-    .sidebar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      height: 100vh;
-      width: 220px;
-      background-color: #003366;
-      color: white;
-      padding-top: 30px;
-      z-index: 1000;
-    }
-
-    .sidebar h4 {
-      text-align: center;
-      margin-bottom: 30px;
-    }
-
-    .sidebar a {
-      display: block;
-      color: white;
-      padding: 15px 20px;
-      text-decoration: none;
-      font-size: 16px;
-      transition: background-color 0.3s ease;
-    }
-
-    .sidebar a:hover,
-    .sidebar a.active {
-      background-color: #0059b3;
-    }
-
-    .content {
-      margin-left: 220px;
-      padding: 30px;
-    }
-
-    header {
-      background: linear-gradient(90deg, #004080, #007acc);
-      color: white;
-      padding: 20px 0;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-      margin-left: 220px;
-      position: sticky;
-      top: 0;
-      z-index: 999;
-    }
-
-    header .container {
-      max-width: 1200px;
-      margin: auto;
-      padding: 0 20px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-    }
-
-    .logo {
-      font-size: 28px;
-      font-weight: bold;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .user-menu {
-      position: relative;
-    }
-
-    .user-name {
-      background: transparent;
-      border: none;
-      color: white;
-      font-weight: 700;
-      cursor: pointer;
-      font-size: 18px;
-      display: flex;
-      align-items: center;
-      gap: 5px;
-    }
-
-    .dropdown {
-      display: none;
-      position: absolute;
-      background-color: white;
-      color: #333;
-      min-width: 220px;
-      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-      padding: 12px 16px;
-      border-radius: 6px;
-      top: 35px;
-      right: 0;
-      z-index: 100;
-    }
-
-    .dropdown p {
-      margin: 6px 0;
-      font-size: 14px;
-    }
-
-    .dropdown a {
-      display: block;
-      margin-top: 10px;
-      text-decoration: none;
-      color: #004080;
-      font-weight: bold;
-      border: 1px solid #004080;
-      padding: 8px 12px;
-      border-radius: 5px;
-      text-align: center;
-    }
-
-    .dropdown a:hover {
-      background-color: #004080;
-      color: white;
-    }
+   body { font-family: 'Poppins', sans-serif; background-color: #f4f6f8; } .sidebar { position: fixed; top: 0; left: 0; height: 100vh; width: 220px; background-color: #003366; color: white; padding-top: 30px; z-index: 1000; } .sidebar h4 { text-align: center; margin-bottom: 30px; } .sidebar a { display: block; color: white; padding: 15px 20px; text-decoration: none; font-size: 16px; transition: background-color 0.3s ease; } .sidebar a:hover, .sidebar a.active { background-color: #0059b3; } .content { margin-left: 220px; padding: 30px; } header { background: linear-gradient(90deg, #004080, #007acc); color: white; padding: 20px 30px; margin-left: 220px; position: sticky; top: 0; z-index: 999; display: flex; justify-content: space-between; align-items: center; } .logo { font-size: 24px; font-weight: bold; } .auth-buttons { display: flex; align-items: center; } .user-menu { position: relative; } .user-name { background: transparent; border: none; color: white; font-weight: bold; font-size: 16px; cursor: pointer; display: flex; align-items: center; gap: 5px; } .dropdown { display: none; position: absolute; background: white; color: black; right: 0; top: 35px; border-radius: 6px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); min-width: 220px; padding: 15px; z-index: 100; } .dropdown p { margin: 5px 0; font-size: 14px; } .dropdown a { display: block; text-align: center; margin-top: 10px; text-decoration: none; padding: 8px 10px; border: 1px solid #004080; border-radius: 5px; font-weight: bold; color: #004080; } .dropdown a:hover { background: #004080; color: white; } .card { border: none; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); } .progress { height: 25px; border-radius: 20px; } .progress-bar { font-weight: bold; } @media (max-width: 768px) { .sidebar { width: 100%; height: auto; position: relative; } .content, header { margin-left: 0; } }
   </style>
 </head>
 <body>
 
+<!-- Sidebar -->
 <div class="sidebar">
   <h4><i class="fas fa-user-shield"></i> Admin Panel</h4>
   <a href="admin.php" class="active"><i class="fas fa-tachometer-alt me-2"></i> Dashboard</a>
@@ -171,23 +60,22 @@ if (isset($_SESSION['user'])) {
   <a href="logout.php" class="text-danger mt-3"><i class="fas fa-sign-out-alt me-2"></i> Logout</a>
 </div>
 
+<!-- Header -->
 <header>
-  <div class="container">
-    <div class="logo"><i class="fas fa-briefcase"></i> JobNest</div>
+  <div class="logo"><i class="fas fa-briefcase"></i> JobNest Admin</div>
+  <div class="auth-buttons">
     <div class="user-menu" id="user-menu">
-      <?php if (!empty($user)): ?>
-        <button class="user-name" id="user-name-btn">
-          <?= $name ?>
-          <i class="fas fa-caret-down"></i>
-        </button>
-        <div class="dropdown" id="user-dropdown">
-          <p><strong>Email:</strong> <?= $email ?></p>
-          <p><strong>Role:</strong> <?= $role ?></p>
-          <a href="index.php?logout=1">Logout</a>
-        </div>
-      <?php endif; ?>
+      <button class="user-name" id="user-name-btn">
+        <?= $name ?> <i class="fas fa-caret-down"></i>
+      </button>
+      <div class="dropdown" id="user-dropdown">
+        <p><strong>Email:</strong> <?= $email ?></p>
+        <p><strong>Role:</strong> <?= $role ?></p>
+        <a href="logout.php" id="logout-btn">Logout</a>
+      </div>
     </div>
   </div>
 </header>
 
+<!-- Main Content -->
 <div class="content">

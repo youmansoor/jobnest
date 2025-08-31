@@ -4,6 +4,17 @@ require_once 'adminheader.php';
 
 $sector = $conn->query("SELECT * FROM roles");
 $sectors = $sector->fetchAll();
+
+// if(isset($_POST['delete'])){
+//   $id = $_POST['delete'];
+
+//   $delete = $conn->prepare("Delete from empolyee where id = '$id'");
+//   $delete->execute();
+
+//   if($delete){
+//     // echo "Data deleted";
+//   }
+// }
 ?>
 
 <div class="main-content" style="margin-left:10; padding: 10px;">
@@ -29,6 +40,8 @@ $sectors = $sector->fetchAll();
                   <th>ID</th>
                   <th>Name</th>
                   <th>Email</th>
+                  <th>Delete</th>
+                  <th>Update</th>
                 </tr>
               </thead>
               <tbody>
@@ -37,6 +50,14 @@ $sectors = $sector->fetchAll();
                     <td><?php echo $emp['id'];?></td>
                     <td><?php echo $emp['Name'];?></td>
                     <td><?php echo $emp['Email'];?></td>
+                    <td>
+                      <form action="" method="POST">
+                        <button type="Submit" name="delete" value="<?php echo $emp['id']; ?>">Delete</button>
+                      </form>
+                    </td>
+                    <td>
+                      <a href="update.php?id=<?php echo $emp['id']; ?>">Update</a>
+                    </td>
                   </tr>
                 <?php endforeach; ?>
               </tbody>

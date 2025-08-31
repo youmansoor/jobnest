@@ -112,38 +112,6 @@ $role = 'Admin';
 <div class="card p-4 mb-5">
   <canvas id="siteProgressChart" height="350"></canvas>
 </div>
-  
-<!-- ADD ROLE SECTION -->
-<h4 class="mb-3">Role Management</h4>
-<button class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#addRoleModal">
-  <i class="fas fa-plus-circle"></i> Add Role
-</button>
-
-<!-- Modal for Add Role -->
-<div class="modal fade" id="addRoleModal" tabindex="-1" aria-labelledby="addRoleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <form class="modal-content" method="POST" action="role.php" onsubmit="return submitRole(event)">
-      <div class="modal-header">
-        <h5 class="modal-title" id="addRoleModalLabel">Add New Role</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <!-- Role Name -->
-        <div class="mb-3">
-          <label for="roleName" class="form-label">Role Id</label>
-          <input type="text" class="form-control" id="roleName" name="id" required>
-          <label for="roleName" class="form-label">Role Name</label>
-          <input type="text" class="form-control" id="roleName" name="role_name" required>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="submit" class="btn btn-success" name="save">Add Role</button>
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-      </div>
-    </form>
-  </div>
-</div>
-
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
