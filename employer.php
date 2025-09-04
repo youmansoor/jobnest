@@ -14,6 +14,7 @@ $employerEmail = $employer['Email'];
 $error = '';
 $success = '';
 
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $title = trim($_POST['title']);
     $company = trim($_POST['company']);
@@ -216,6 +217,10 @@ $applicants = $appStmt->fetchAll();
                                     <br><a href="<?php echo $app['resume_path'];?>" target="_blank">View Resume</a>
                                 <?php endif; ?>
                             </li>
+                            <form action="status.php" method="POST">
+                                <button type="submit" name="hire" value="<?php echo $app['id'];?>">Hire</button>
+                                <button type="submit" name="reject" value="<?php echo $app['id'];?>">Reject</button>
+                            </form>
                         <?php endforeach; ?>
                     </ul>
                 <?php else: ?>

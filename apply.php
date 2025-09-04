@@ -55,14 +55,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } else {
         $error = "Please upload a resume.";
     }
-
+    $jobtitle = $job['title'];
     if (empty($error)) {
-        $applyStmt = $conn->prepare("
-    INSERT INTO applicants (name, email, cover_letter, resume_path, job_title)
-    VALUES (?, ?, ?, ?, ?)
-");
-if ($applyStmt->execute([$name, $email, $message, $resumePath, $job['title']])) {
-    $success = "Application submitted successfully!";
+        $applyStmt = $conn->prepare("INSERT INTO applicants (cover_letter, resume_path, job_title) VALUES ('$message', '$resumePath', '$jobtitle')");
+if ($applyStmt->execute()) {
+    // $success = "Application submitted successfully!";
+    $id = $conn->lastInsertId();
+echo "<script>alert('Application submitted successfully!\\nYour ID no. is: $id\\nPlease return in a few days to check the status of your application.\\nAt this page:check_status.php');</script>";
 } else {
     $error = "Failed to submit application.";
 }
