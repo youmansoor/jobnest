@@ -254,9 +254,10 @@ $showBackToAdmin = ($role === 'admin' && $currentPage === 'index.php');
       <ul>
         <li><a href="index.php">Home</a></li>
         <li><a href="feedback.php">Feedback</a></li>
+        <li><a href="check_status.php">Check Status</a></li>
 
         <?php if ($showBackToEmployer): ?>
-          <li><a href="employer.php" class="employer-back">Employer Dashboard</a></li>
+          <li><a href="employers.php" class="employer-back">Employer Dashboard</a></li>
         <?php endif; ?>
 
         <?php if ($showBackToAdmin): ?>

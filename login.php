@@ -20,16 +20,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmtadmin->execute([$email]);
     $admin = $stmtadmin->fetch();
 
-    if ($user && $password === $user['Password']) {
-        $_SESSION['user'] = [
-            'id'    => $user['id'],
-            'Name'  => $user['Name'],
-            'Email' => $user['Email'],
-        ];
-        header("Location: jobs.php");
-        exit;
-    }
-    elseif ($admin && $password === $admin['Password']) {
+    // if ($user && $password === $user['Password']) {
+    //     $_SESSION['user'] = [
+    //         'id'    => $user['id'],
+    //         'Name'  => $user['Name'],
+    //         'Email' => $user['Email'],
+    //     ];
+    //     header("Location: jobs.php");
+    //     exit;
+    // }
+    if ($admin && $password === $admin['Password']) {
         $_SESSION['user'] = [
             'id'    => $admin['id'],
             'Name'  => $admin['Name'],
@@ -44,7 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             'Name'  => $emp['Name'],
             'Email' => $emp['Email'],
         ];
-        header("Location: employer.php");
+        header("Location: employers.php");
         exit;
     }
      else {

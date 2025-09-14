@@ -14,11 +14,13 @@ $employerEmail = $employer['Email'];
 $error = '';
 $success = '';
 
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['title'], $_POST['company'], $_POST['location'], $_POST['description'])) {
     $title = trim($_POST['title']);
     $company = trim($_POST['company']);
     $location = trim($_POST['location']);
-    $sector = trim($_POST['sector']);
+    $sector = trim($_POST['sector'] ?? '');  // Optional field
     $description = trim($_POST['description']);
 
     if (!$title || !$company || !$location || !$description) {
@@ -32,6 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 }
+}
 
 $stmt = $conn->prepare("SELECT * FROM jobs WHERE employer_email = ? ORDER BY id");
 $stmt->execute([$employerEmail]);
@@ -40,6 +43,17 @@ $jobs = $stmt->fetchAll();
 $appStmt = $conn->prepare("SELECT * FROM applicants ORDER BY id");
 $appStmt->execute();
 $applicants = $appStmt->fetchAll();
+
+// Handle message sending
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['message'], $_POST['applicant_id'])) {
+    $message = trim($_POST['message']);
+    $applicantId = intval($_POST['applicant_id']);
+    
+    if (!empty($message)) {
+        $stmt = $conn->prepare("INSERT INTO messages (applicant_id, sender, message) VALUES (?, 'employer', ?)");
+        $stmt->execute([$applicantId, $message]);
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -216,6 +230,37 @@ $applicants = $appStmt->fetchAll();
                                     <br><a href="<?php echo $app['resume_path'];?>" target="_blank">View Resume</a>
                                 <?php endif; ?>
                             </li>
+                            <?php
+// Fetch messages for this applicant
+$msgStmt = $conn->prepare("SELECT * FROM messages WHERE applicant_id = ? ORDER BY sent_at ASC");
+$msgStmt->execute([$app['id']]);
+$messages = $msgStmt->fetchAll();
+?>
+
+<div style="margin-top: 20px; background: #f9f9f9; padding: 10px; border-radius: 8px;">
+    <h5>Chat with Applicant</h5>
+    
+    <div style="max-height: 200px; overflow-y: auto; margin-bottom: 10px;">
+        <?php foreach ($messages as $msg): ?>
+            <p><strong><?= ucfirst($msg['sender']) ?>:</strong> <?= htmlspecialchars($msg['message']) ?><br>
+            <small><?= $msg['sent_at'] ?></small></p>
+        <?php endforeach; ?>
+        <?php if (empty($messages)): ?>
+            <p><em>No messages yet.</em></p>
+        <?php endif; ?>
+    </div>
+
+    <form method="POST">
+        <input type="hidden" name="applicant_id" value="<?= $app['id'] ?>">
+        <textarea name="message" placeholder="Type your message..." required></textarea>
+        <button type="submit">Send</button>
+    </form>
+</div>
+
+                            <form action="status.php" method="POST">
+                                <button type="submit" name="hire" value="<?php echo $app['id'];?>">Hire</button>
+                                <button type="submit" name="reject" value="<?php echo $app['id'];?>">Reject</button>
+                            </form>
                         <?php endforeach; ?>
                     </ul>
                 <?php else: ?>

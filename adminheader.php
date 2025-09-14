@@ -2,10 +2,10 @@
 session_start();
 require_once 'config.php';
 
-if (!isset($_SESSION['user']) || $_SESSION['user']['Email'] !== 'admin@gmail.com') {
-    header("Location: login.php");
-    exit;
-}
+// if (!isset($_SESSION['user']) || $_SESSION['user']['Email'] !== 'admin@gmail.com') {
+//     header("Location: login.php");
+//     exit;
+// }
 
 
 $user = null;
@@ -38,6 +38,7 @@ if (isset($_SESSION['user'])) {
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Admin Dashboard - JobNest</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
   <style>
@@ -50,12 +51,13 @@ if (isset($_SESSION['user'])) {
 <div class="sidebar">
   <h4><i class="fas fa-user-shield"></i> Admin Panel</h4>
   <a href="admin.php" class="active"><i class="fas fa-tachometer-alt me-2"></i> Dashboard</a>
-  <a href="users.php"><i class="fas fa-users me-2"></i> Users</a>
+  <a href="role.php"><i class="fas fa-user me-2"></i> User Managemnt</a>
+  <!-- <a href="users.php"><i class="fas fa-users me-2"></i> Users</a> -->
   <a href="employers.php"><i class="fas fa-building me-2"></i> Employers</a>
   <a href="job.php"><i class="fas fa-briefcase me-2"></i> Jobs</a>
   <a href="applicants.php"><i class="fas fa-file-alt me-2"></i> Applicants</a>
+  <a href="messages.php"><i class="fas fa-comments me-2"></i> Messages</a>
   <a href="feedbacks.php"><i class="fas fa-comments me-2"></i> Feedback</a>
-  <a href="role.php"><i class="fas fa-user me-2"></i> User Managemnt</a>
   <a href="index.php"><i class="fas fa-home me-2"></i> Back to Home</a>
   <a href="logout.php" class="text-danger mt-3"><i class="fas fa-sign-out-alt me-2"></i> Logout</a>
 </div>
