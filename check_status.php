@@ -1,4 +1,5 @@
 <?php
+
 ob_start();
 require_once 'header.php';
 require_once 'config.php';

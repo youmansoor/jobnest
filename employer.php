@@ -256,7 +256,6 @@ $messages = $msgStmt->fetchAll();
         <button type="submit">Send</button>
     </form>
 </div>
-
                             <form action="status.php" method="POST">
                                 <button type="submit" name="hire" value="<?php echo $app['id'];?>">Hire</button>
                                 <button type="submit" name="reject" value="<?php echo $app['id'];?>">Reject</button>
