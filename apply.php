@@ -108,7 +108,7 @@ echo "<script>alert('Application submitted successfully!\\nYour ID no. is: $id\\
             border: 1px solid #ccc;
             margin-top: 8px;
         }
-        .btn {
+        #btn {
             background: #004080;
             color: #fff;
             border: none;
@@ -118,7 +118,7 @@ echo "<script>alert('Application submitted successfully!\\nYour ID no. is: $id\\
             font-size: 16px;
             margin-top: 20px;
         }
-        .btn:hover {
+        #btn:hover {
             background: #005fa3;
         }
         .error, .success {
@@ -154,7 +154,7 @@ echo "<script>alert('Application submitted successfully!\\nYour ID no. is: $id\\
     <label for="resume">Upload Resume (PDF, DOC, DOCX):</label>
     <input type="file" name="resume_path" id="resume" accept=".pdf,.doc,.docx" required>
 
-    <button type="submit" class="btn">Submit Application</button>
+    <button type="submit" id="btn">Submit Application</button>
 </form>
 
 </div>

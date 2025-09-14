@@ -69,7 +69,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['message'], $_POST['ap
             border: 1px solid #ccc;
             border-radius: 6px;
         }
-        .btn {
+        #btn {
             background: #004080;
             color: #fff;
             border: none;
@@ -79,7 +79,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['message'], $_POST['ap
             font-size: 16px;
             margin-top: 20px;
         }
-        .btn:hover {
+        #btn:hover {
             background: #005fa3;
         }
         .error {
@@ -106,7 +106,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['message'], $_POST['ap
     <form method="POST">
         <label for="applicant_id">Enter Your Application ID:</label>
         <input type="text" name="applicant_id" id="applicant_id" required>
-        <button type="submit" class="btn">Check Status</button>
+        <button type="submit" id="btn">Check Status</button>
     </form>
 
     <?php if ($error): ?>

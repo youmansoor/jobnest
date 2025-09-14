@@ -122,8 +122,7 @@ $showBackToAdmin = ($role === 'admin' && $currentPage === 'index.php');
     gap: 6px;
   }
 
-  .btn:hover,
-  .btn:focus {
+  .btn:hover {
     background: transparent;
     color: white;
     border: 2px solid white;
