@@ -344,7 +344,6 @@ $google_login_url = "https://accounts.google.com/o/oauth2/v2/auth?" . http_build
             <input type="password" id="password" name="Password" required autocomplete="current-password" />
             <label for="role">Login as:</label>
 <select id="role" name="Role" required>
-  <option value="user">User (Freelancer)</option>
   <option value="empolyee">Employer</option>
 </select>
 

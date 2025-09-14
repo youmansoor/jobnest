@@ -89,6 +89,6 @@ if ($role === 'user') {
         'Name'  => $name,
         'Email' => $email,
     ];
-    header("Location: employer.php"); // employer dashboard
+    header("Location: employers.php"); // employer dashboard
 }
 exit;
