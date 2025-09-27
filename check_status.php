@@ -136,7 +136,7 @@ $messages = $msgStmt->fetchAll();
     <form method="POST" style="margin-top: 15px;">
         <input type="hidden" name="applicant_id" value="<?= $applicant['id'] ?>">
         <textarea name="message" rows="3" style="width:100%; padding:10px;" placeholder="Type your reply..." required></textarea>
-        <button type="submit" class="btn">Send Reply</button>
+        <button type="submit" id="btn">Send Reply</button>
     </form>
 </div>
 
